@@ -252,6 +252,15 @@ public class GenerateBaseDcsPlugin extends PluginAdapter {
             getTotalMethod.setReturnType(intType);
             serviceClass.addMethod(getTotalMethod);
 
+
+            Method countByExampleMethod = new Method();
+            countByExampleMethod.setVisibility(JavaVisibility.PUBLIC);
+            countByExampleMethod.setName("countByExample");
+            serviceDeleteMethod.addParameter(new Parameter(exampleType, exampleParameterName));
+            countByExampleMethod.addBodyLine(" return dao.count(" + exampleParameterName + ");");
+            countByExampleMethod.setReturnType(intType);
+            serviceClass.addMethod(countByExampleMethod);
+
             GeneratedJavaFile serviceFile = new GeneratedJavaFile(serviceClass, this.targetProject, fileEncoding, new DefaultJavaFormatter());
             javaFiles.add(serviceFile);
 
