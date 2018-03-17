@@ -17,7 +17,7 @@ public class MySQLLimitPlugin extends PluginAdapter {
 
 
     /**
-     * 为每个Example类添加limit和offset属性已经set、get方法
+     * 为每个Example类添加limit和offset属性以及set、get方法
      */
     @Override
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
