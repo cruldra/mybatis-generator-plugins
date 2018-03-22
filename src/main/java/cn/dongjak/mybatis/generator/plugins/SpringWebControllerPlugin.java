@@ -48,7 +48,7 @@ public class SpringWebControllerPlugin extends PluginAdapter {
         FullyQualifiedJavaType genericListTypeOfModelType = FullyQualifiedJavaType.getNewListInstance();
         genericListTypeOfModelType.addTypeArgument(modelType);
         //endregion
-        FullyQualifiedJavaType exampleFormType = new FullyQualifiedJavaType("org.apache.ibatis.form.ExampleForm");
+        FullyQualifiedJavaType exampleFormType = new FullyQualifiedJavaType("org.apache.org.apache.ibatis.form.ExampleForm");
         listType.addTypeArgument(modelType);
         FullyQualifiedJavaType intType = FullyQualifiedJavaType.getIntInstance();
         FullyQualifiedJavaType boolType = FullyQualifiedJavaType.getBooleanPrimitiveInstance();

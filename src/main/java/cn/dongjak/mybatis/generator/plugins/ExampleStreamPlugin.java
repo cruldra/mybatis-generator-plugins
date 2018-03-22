@@ -84,7 +84,7 @@ public class ExampleStreamPlugin extends PluginAdapter {
         Method ofMethod = new Method();
         ofMethod.setVisibility(JavaVisibility.PUBLIC);
         ofMethod.setName("of");
-        ofMethod.addParameter(new Parameter(new FullyQualifiedJavaType("org.apache.ibatis.form.ExampleForm"), "example"));
+        ofMethod.addParameter(new Parameter(new FullyQualifiedJavaType("org.apache.org.apache.ibatis.form.ExampleForm"), "example"));
         ofMethod.addBodyLine("//解析查询条件");
         ofMethod.addBodyLine("return this;");
         ofMethod.setReturnType(topLevelClass.getType());
