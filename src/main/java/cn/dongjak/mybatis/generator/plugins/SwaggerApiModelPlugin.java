@@ -7,6 +7,9 @@ import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.List;
 
 public class SwaggerApiModelPlugin extends PluginAdapter {
@@ -22,12 +25,18 @@ public class SwaggerApiModelPlugin extends PluginAdapter {
 
         StringBuilder annotationStringBuilder = new StringBuilder("@ApiModelProperty");
         if (StringUtils.isNotBlank(introspectedColumn.getRemarks())) {
-            annotationStringBuilder.append("(").append("value=\"").append(introspectedColumn.getRemarks()).append("\"");
+            //introspectedColumn.getJdbcTypeName()
+            BufferedReader reader = new BufferedReader(new StringReader(introspectedColumn.getRemarks()));
+            try {
+                annotationStringBuilder.append("(").append("value=\"").append(reader.readLine()).append("\"").append(")");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             // if(introspectedColumn.getDefaultValue())
         }
         // String.format("@ApiModelProperty(value=\"%s\",example=%s)", introspectedColumn.getRemarks(), introspectedColumn.getDefaultValue());
-        //field.addAnnotation(annotationString);
+        field.addAnnotation(annotationStringBuilder.toString());
         return true;
     }
 }
